@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kita Masih Di Sini</title>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; transition: all 0.3s ease; }
+    body {
+      font-family: 'Chewy', cursive;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      color: #5e4b56;
+      background: linear-gradient(to bottom right, #ffe4ec, #f3e5f5);
+      overflow-x: hidden;
+    }
+
+    body.dark-mode {
+      background: linear-gradient(to bottom right, #2b2b2b, #1e1e1e);
+      color: #eee;
+    }
+
+    h1, h2 {
+      color: #c2185b;
+      animation: fadeIn 2s ease;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      animation: fadeInUp 1.2s ease;
+    }
+    .intro { font-size: 1.2rem; margin-bottom: 20px; animation: fadeIn 2s ease; }
+
+    button {
+      padding: 10px 20px;
+      background-color: #ffc2d1;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-family: 'Chewy', cursive;
+    }
+    button:hover { background-color: #ffb3c1; }
+
+    .slides { margin-top: 30px; }
+    .slide {
+      display: none;
+      font-size: 1.1rem;
+      margin: 20px auto;
+      width: fit-content;
+      max-width: 80%;
+      padding: 15px 25px;
+      background-color: #fffafc;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: relative;
+      text-align: left;
+    }
+    .slide::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 30px;
+      border-width: 10px;
+      border-style: solid;
+      border-color: #fffafc transparent transparent transparent;
+    }
+
+    body.dark-mode .slide {
+      background-color: #3a3a3a;
+      color: #fff;
+    }
+    body.dark-mode .slide::after {
+      border-color: #3a3a3a transparent transparent transparent;
+    }
+
+    .photo-frame, #gifContainer, #page2 {
+      display: none;
+      animation: fadeInUp 1.4s ease;
+      text-align: center;
+    }
+    .photo {
+      max-width: 200px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .photo-caption {
+      font-style: italic;
+      color: #6b4c5e;
+      margin-top: 10px;
+    }
+
+    #toggleMusic, #toggleTheme {
+      position: fixed;
+      top: 20px;
+      background-color: #ffccd5;
+      color: #5c1a1b;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      z-index: 9999;
+      font-family: 'Chewy', cursive;
+    }
+    #toggleMusic { right: 20px; }
+    #toggleTheme { left: 20px; }
+
+    #gifContainer img {
+      width: 140px;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .lantern {
+      position: fixed;
+      top: 0;
+      width: 60px;
+      height: 80px;
+      z-index: 999;
+      opacity: 0.2;
+      transition: all 0.4s ease;
+    }
+    .lantern.left { left: 20px; }
+    .lantern.right { right: 20px; }
+    body.dark-mode .lantern {
+      opacity: 1;
+      filter: drop-shadow(0 0 12px #ffbb33);
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0}
+      to {opacity: 1}
+    }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(30px)}
+      to {opacity: 1; transform: translateY(0)}
+    }
+  </style>
+</head>
+<body>
+  <!-- Toggle Buttons -->
+  <button id="toggleMusic">💖 Musik: Nyala</button>
+  <button id="toggleTheme">🌙 Mode: Terang</button>
+
+  <!-- Lentera -->
+  <img src="Lantern_free_icons_designed_by_nawicon-removebg-preview.png" class="lantern left" alt=  "Lantern Left">
+  <img src="Lantern_free_icons_designed_by_nawicon-removebg-preview.png" class="lantern right" alt="Lantern Right">
+
+  <!-- Page 1 -->
+  <div class="container" id="page1">
+    <h1>Untuk Ocill 💖</h1>
+    <p class="intro">Meskipun dunia seperti ingin menjauhkan kita, kita masih di sini... berjuang untuk satu sama lain.</p>
+    <button onclick="nextSlide()">Lanjut</button>
+
+    <div id="slides" class="slides">
+      <div class="slide">Aku tahu akhir-akhir ini semuanya terasa berat...</div>
+      <div class="slide">Tapi kamu harus tahu, kamu bukan sendirian...</div>
+      <div class="slide">Aku di sini, tetap memilih kita...</div>
+      <div class="slide">Ocill, senyummu masih alasanku bertahan sejauh ini...</div>
+      <div class="slide">Aku sayang kamu, bukan karena mudah, tapi karena kamu pantas untuk diperjuangkan...</div>
+      <div class="slide">Kalau kamu lelah, sini Hug dulu 🤗</div>
+      <div class="slide">Apapun yang terjadi nanti, cinta ini tetap nyata.</div>
+      <div class="slide">Kita masih di sini, dan semoga tetap di sana, bersama.</div>
+      <div class="slide">I LOVE YOU 3000 TIMES 💌</div>
+      <div class="slide">Dan senyum itu... yang di foto itu... masih jadi hal terindah yang bisa nenangin aku di saat aku jatuh. Jangan hilang ya, senyum itu. Aku butuh itu, selalu. 🥺❤️</div>
+    </div>
+    <button id="toPage2" style="display:none; margin-top:20px;">➡️ Lihat Peluk & Senyum Kamu</button>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="container" id="page2">
+    <h2>Peluk & Senyum Kamu 💗</h2>
+    <div class="photo-frame">
+      <img src="cantiknyaaku.jpg" alt="Senyuman Ocill" class="photo" />
+      <p class="photo-caption">Senyum kamu ini, yang selalu buat aku kuat meski dunia lagi runtuh 💖</p>
+    </div>
+    <div id="gifContainer">
+      <img src="https://media.tenor.com/9vlYRaHoo0oAAAAi/collapse-need-hug.gif" alt="Peluk Digital" />
+      <p class="photo-caption">Cinii Hug Dulu 🧸💞</p>
+    </div>
+  </div>
+
+  <!-- Audio -->
+  <audio id="backgroundMusic" src="Banda Neira - Sampai Jadi Debu - Peaceful Piano [9CHAP_Sdc9A].mp3" autoplay loop></audio>
+  <audio id="typeSound" src="ketik.mp3"></audio>
+
+  <!-- Script -->
+  <script>
+    const slides = document.querySelectorAll(".slide");
+    const typeSound = document.getElementById("typeSound");
+    let currentSlide = 0;
+
+    function nextSlide() {
+      if (currentSlide < slides.length) {
+        const current = slides[currentSlide];
+        typeText(current);
+        current.style.display = "block";
+        currentSlide++;
+        if (currentSlide === slides.length) {
+          document.getElementById("toPage2").style.display = "inline-block";
+        }
+      }
+    }
+
+    function typeText(el) {
+      const text = el.textContent;
+      el.textContent = "";
+      let i = 0;
+      typeSound.currentTime = 0;
+      typeSound.play();
+      const interval = setInterval(() => {
+        el.textContent += text[i];
+        i++;
+        if (i >= text.length) {
+          clearInterval(interval);
+          typeSound.pause();
+        }
+      }, 40);
+    }
+
+    document.getElementById("toPage2").addEventListener("click", function () {
+      document.getElementById("page1").style.display = "none";
+      document.getElementById("page2").style.display = "block";
+      document.querySelector(".photo-frame").style.display = "block";
+      document.getElementById("gifContainer").style.display = "block";
+    });
+
+    const music = document.getElementById('backgroundMusic');
+    const toggleBtn = document.getElementById('toggleMusic');
+    toggleBtn.addEventListener('click', function () {
+      if (music.paused) {
+        music.play();
+        toggleBtn.textContent = '💖 Musik: Nyala';
+      } else {
+        music.pause();
+        toggleBtn.textContent = '🧸 Musik: Mati';
+      }
+    });
+
+    const toggleTheme = document.getElementById('toggleTheme');
+    toggleTheme.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      toggleTheme.textContent = document.body.classList.contains('dark-mode') ? '☀️ Mode: Malam' : '🌙 Mode: Terang';
+    });
+  </script>
+</body>
+</html>
